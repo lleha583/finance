@@ -2,7 +2,10 @@ $purple: #222338;
 $link : #b4b4b4;
 
 header {
-    width: 80px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 75px;
     height: 100vh;
     background-color: $purple;
     padding: 20px;

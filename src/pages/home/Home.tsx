@@ -1,7 +1,13 @@
+import Dashboard from "../../components/Dashboard/Dashboard";
+import HeaderUser from "../../components/HeaderUser/HeaderUser";
+import Transition from "../../components/Transition/Transition";
+
 export default function Home() {
     return (
-        <section>
-            <h1>homeasdfsadfasfsafsafsfsfsfsd</h1>
-        </section>
+        <>
+            <HeaderUser />
+            <Dashboard />
+            <Transition />
+        </>
     )
 }

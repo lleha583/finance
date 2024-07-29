@@ -1,0 +1,38 @@
+$user_color: #222338;
+
+.section_header {
+    height: 90px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.search {
+    width: 300px;
+    height: 45px;
+    padding: 0 20px;
+    border-radius: 10px;
+    background-color: $user_color;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search__inner {
+    width: 250px;
+    height: 30px;
+    background-color: $user_color;
+    color: #b4b4b4;
+    outline: none;
+    border: none;
+}
+
+.user_nav {
+    display: flex;
+    gap: 30px;
+}
+
+.user_nav_box {
+    margin: 10%;
+}

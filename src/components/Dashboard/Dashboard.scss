@@ -1,0 +1,48 @@
+.dashboard {
+    width: 30%;
+    height: 350px;
+}
+
+.card {
+    position: relative;
+    width: 400px;
+    height: 250px;
+    background: #803aa2;
+    background: linear-gradient(125deg, #662288 0%, rgba(78,15,157,1) 27%, #491d9e 61%, #5e2288 100%);
+    border-radius: 10px;
+    margin-top: 25px;
+}
+
+.card::after {
+    content: "";
+    display: block;
+    top: 12px;
+    border-radius: 0 0 5px 5px;
+    left: 30px;
+    position: relative;
+    width: 340px;
+    height: 8px;
+    background-color: #cc89ff49;
+
+}
+
+.card__inner {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card_balance {
+    height: 150px;
+}
+
+.card_info {
+    width: 330px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card__inner p {
+    margin: 0 0 10px 0;
+}

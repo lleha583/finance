@@ -1,0 +1,24 @@
+.transition {
+    width: 40%;
+}
+
+.transition__inner {
+    margin-top: 20px;
+}
+
+.transition_block {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222338;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.transition_block_img {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
