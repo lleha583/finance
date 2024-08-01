@@ -1,27 +1,38 @@
 import "./Dashboard.scss";
+import { ICard } from "../../interface/interface";
+import iconMoney from "../../assets/icons/components/money.svg"
 
-export default function Dashboard() {
+export default function Dashboard(props: {card: ICard[]}) {
+    console.log(props)
 
-    let money = '1236.34';
-    let number = '4266 5290 4726 8442';
-    let year = '09/26';
+    return (
+      <section className="dashboard">
+        <div>
 
-  return (
-    <section className="dashboard">
         <h1>Dashboard</h1>
-        <div className="card">
-            <div className="card__inner">
+        {props.card.map((item: ICard) => {
+          return (
+            <div className="card">
+              <div className="card__inner">
                 <div className="card_balance">
-                    <p>Current Balance</p>
-                    <h2>${money}</h2>
+                  <p>Current Balance</p>
+                  <h2>${item.balance}</h2>
                 </div>
                 <div className="card_info">
-                    <p>{number}</p>
-                    <p>{year}</p>
+                  <p>{item.number}</p>
+                  <p>{item.date}</p>
                 </div>
-                
+              </div>
             </div>
+          );
+        })}
         </div>
-    </section>
-  );
+          
+        <div className="link_transitions">
+          <img src={iconMoney} />
+        <h1>spent today</h1>
+        <h2>0</h2>
+        </div>
+      </section>
+    );
 }

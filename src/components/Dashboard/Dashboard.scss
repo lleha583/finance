@@ -1,6 +1,8 @@
 .dashboard {
-    width: 30%;
+    width: 40%;
     height: 350px;
+    display: flex;
+    gap: 40px;
 }
 
 .card {
@@ -45,4 +47,16 @@
 
 .card__inner p {
     margin: 0 0 10px 0;
+}
+
+.link_transitions {
+    width: 200px;
+    height: 250px;
+    box-sizing: border-box;
+    background-color: #222338;
+    border-radius: 10px;
+    position: relative;
+    top: 60px;
+    text-align: center;
+    padding-top: 10px;
 }
