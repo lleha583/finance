@@ -1,9 +1,15 @@
 export interface IRecord {
-  card: ICard[];
+  card: string;
   email: string;
   name: string;
-  transitions: ITransitions[],
+  transitions: string,
 }
+
+export interface IUserData {
+  card: ICard[],
+  transition: ITransitions[],
+  status: string
+} 
 
 export interface ICard {
     balance: number,
@@ -19,7 +25,6 @@ export interface ITransitions {
 }
 
 export interface IUser {
-  card: any;
   status: string;
   record: IRecord;
   metaData: any;

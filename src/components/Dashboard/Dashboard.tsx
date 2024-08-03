@@ -1,18 +1,16 @@
 import "./Dashboard.scss";
 import { ICard } from "../../interface/interface";
-import iconMoney from "../../assets/icons/components/money.svg"
+import iconMoney from "../../assets/icons/components/money.svg";
 
 export default function Dashboard(props: {card: ICard[]}) {
-    console.log(props)
 
-    return (
-      <section className="dashboard">
-        <div>
-
+  return (
+    <section className="dashboard">
+      <div>
         <h1>Dashboard</h1>
-        {props.card.map((item: ICard) => {
+        {props.card.map((item: ICard, index: number) => {
           return (
-            <div className="card">
+            <div className="card" key={index}>
               <div className="card__inner">
                 <div className="card_balance">
                   <p>Current Balance</p>
@@ -26,13 +24,13 @@ export default function Dashboard(props: {card: ICard[]}) {
             </div>
           );
         })}
-        </div>
-          
-        <div className="link_transitions">
-          <img src={iconMoney} />
+      </div>
+
+      <div className="link_transitions">
+        <img src={iconMoney} />
         <h1>spent today</h1>
         <h2>0</h2>
-        </div>
-      </section>
-    );
+      </div>
+    </section>
+  );
 }

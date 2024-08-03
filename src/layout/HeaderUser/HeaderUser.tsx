@@ -4,12 +4,12 @@ import notification from "../../assets/icons/components/notification.svg";
 import unknownImage from "../../assets/icons/components/user.svg";
 import userImg from "../../assets/icons/components/userImg.png"
 import { useSelector } from "react-redux";
-import { IUser } from "../../interface/interface";
+import { IUser, IUserData } from "../../interface/interface";
 
 
 export default function HeaderUser() {
     
-    const user = useSelector((state: IUser) => {return state})
+    const userStatus = useSelector((state: {user: IUser, userData: IUserData}) => {return state.user.status})
 
 
     return (
@@ -24,7 +24,7 @@ export default function HeaderUser() {
                 </div>
                 <div className="block_icon user">
                     {
-                        (user.status === "fulfilled") ? <img className="user_nav_box" src={userImg} /> : <img className="user_nav_box" src={unknownImage} />
+                        (userStatus === "fulfilled") ? <img className="user_nav_box" src={userImg} /> : <img className="user_nav_box" src={unknownImage} />
                     }
                     
                 </div>

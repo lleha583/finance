@@ -1,30 +1,30 @@
-import { useSelector } from "react-redux";
-import { IRecord, ITransitions } from "../interface/interface";
 
-export default function putApi(props: {record: IRecord, transData: ITransitions}) {
+import { ITransitions, IUser, IUserData } from "../interface/interface";
 
-
-    const pushData = {
-        name: props.record.name,
-        email: props.record.email,
-        card: [...props.record.card],
-        transitions: [...props.record.transitions, props.transData]
+export default function putApi(props: {user: { user: IUser; userData: IUserData }, transData: ITransitions;}) {
+  const balance = {
+    card: [
+      {
+        ...props.user.userData.card[0],
+        balance: Number((props.user.userData.card[0].balance - props.transData.money).toFixed(2)),
       }
-    console.log(pushData)
-    
-      fetch("https://api.jsonbin.io/v3/b/66a8dc7fad19ca34f88ef50d", {
-        method: "PUT",
-        headers: {
-          "X-Master-Key": "$2a$10$.qwR4ivgwYmt0svX8dJ0heS1oXkqsdFhDW1gWMSF01PGXqOY6WV0y",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(pushData),
-      })
-      .then(response=>response.json())
-      .then(value=>console.log(value))
+    ]
+  };
 
-      setTimeout(() =>{
-            location.reload();
-      }, 1000)
+  const pushData = {
+    transitions: [props.transData, ...props.user.userData.transition]
+  };
 
+  const editApi = (url: string, data: any) => {
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "X-Master-Key": "$2a$10$.qwR4ivgwYmt0svX8dJ0heS1oXkqsdFhDW1gWMSF01PGXqOY6WV0y",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })};
+
+  editApi(props.user.user.record.transitions, pushData);
+  editApi(props.user.user.record.card, balance);
 }

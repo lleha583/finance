@@ -1,8 +1,9 @@
 import "./Transition.scss";
 import shopping from "../../assets/icons/components/shopping.svg";
-import { ITransitions, IUser } from "../../interface/interface";
+import { ITransitions } from "../../interface/interface";
 
-export default function Transition(props: { transition: ITransitions[] }) {
+export default function Transition(props: any) {
+
   return (
     <section className="transition">
       <h1>Recent Transition</h1>

@@ -1,35 +1,43 @@
 import { useSelector } from "react-redux";
-import { IUser } from "../../interface/interface";
-import { ITransitions } from "../../interface/interface";
+import { IUser, ITransitions, IUserData } from "../../interface/interface";
 import shopping from "../../assets/icons/components/shopping.svg";
 import "./transitions.scss";
 import { useState } from "react";
 import putApi from "../../services/putApi";
+import dayjs from "dayjs";
+import removeApi from "../../services/removeApi";
+
 
 export default function Transitions() {
-  const user = useSelector((state: IUser) => {return state;});
+  const user = useSelector((state: {user: IUser, userData: IUserData}) => {return state});
+
+  let day = dayjs();
 
   const [trans, setTrans] = useState(false);
   const [category, setCategory] = useState<string>("");
-  const [date, setDate] = useState<string>("");
+  const [date, setDate] = useState<string>(``);
   const [money, setMoney] = useState<string>("");
 
-  const createPut = () => {
+  const createApi = () => {
     const transData = {
-      category: category,
-      money: Number(money),
-      date: date,
-      id: 4
+        category: category,
+        money: +money,
+        date: date,
+        id: user.userData.transition[0].id + 1
     }
-    const record = user.record
-    putApi({record, transData})
+    
+    putApi({user, transData})
   }
 
-  if(user.status === "fulfilled") {
+  const deleteApi = (key: number) => {
+    removeApi({user, key})
+  }
+
+  if(user.userData.status === "fulfilled") {
     return (
       <section>
       <h1>Transitions</h1>
-      <button className="btn_add" onClick={() => {setTrans(!trans);}}>Add transition</button>
+      <button className="btn_new" onClick={() => {setTrans(!trans);}}>Add transition</button>
       <div className="transition__inner transition_page">
       <div className="transition_block">
         <div className="transition_block_img">
@@ -37,6 +45,7 @@ export default function Transitions() {
         </div>
         <p>date</p>
         <p>price</p>
+        <p>settings</p>
         </div>
         {trans === true ? (
           <div className="transition_block">
@@ -46,9 +55,9 @@ export default function Transitions() {
             </div>
             <input  onChange={(e)=>{setDate(e.target.value)}} value={date} placeholder="date"  type="text" />
             <input  onChange={(e)=>{setMoney(e.target.value)}} value={money} placeholder="money"  type="text" />
-            <button onClick={createPut}>add</button>
+            <button className="btn_add" onClick={createApi}>add</button>
           </div>) : ("")}
-        {user.record.transitions.map((item: ITransitions) => {
+        {user.userData.transition.map((item: ITransitions) => {
           return (
             <div className="transition_block" key={item.id}>
               <div className="transition_block_img">
@@ -57,6 +66,7 @@ export default function Transitions() {
               </div>
               <p>{item.date}</p>
               <p>${item.money}</p>
+              <button className="btn_add" onClick={()=>{deleteApi(item.id)}}>Delete</button>
             </div>
           );
         })}

@@ -21,7 +21,7 @@ export default function Header() {
                 <Link to={"/analys"}>
                 <div>
                     <img src={graph} />
-                    <p>Analys</p>
+                    <p>Transitions</p>
                 </div>
                 </Link>
                 <Link to={"/analys"}>

@@ -6,6 +6,7 @@ import { ITransitions } from "../../interface/interface";
 ChartJS.register(Tooltip, Legend, ArcElement);
 
 export default function DiagrammPie(props: { transition: ITransitions[] }) {
+
   const options = {};
 
   const pieChartData = {
